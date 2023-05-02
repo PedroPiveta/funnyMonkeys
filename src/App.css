@@ -1,0 +1,248 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+:root {
+  --menu: #3d3d3d;
+  --fundo: #4b4b4b;
+  --destaque: #ff3838;
+  --texto: #ff4d4d;
+}
+
+@keyframes rainbow {
+  14% {
+    color: red;
+  }
+  28% {
+    color: orange;
+  }
+  42% {
+    color: yellow;
+  }
+  56% {
+    color: green;
+  }
+  70% {
+    color: blue;
+  }
+  84% {
+    color: indigo;
+  }
+  98% {
+    color: purple;
+  }
+}
+
+@keyframes transform {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes jello {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes gradient {
+  from {
+    background-position: left;
+  }
+  to {
+    background-position: right;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  /* animation: rainbow 1000ms infinite; */
+}
+
+body::-webkit-scrollbar {
+  width: 6px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--menu);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--texto);
+  width: 10px;
+  border-radius: 5px;
+}
+
+body {
+  background: var(--fundo);
+  color: var(--destaque);
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
+
+nav {
+  width: 100%;
+  /* display: inline-block; */
+  /* height: 100px; */
+  padding: 20px;
+  background: var(--menu);
+}
+
+nav h1 {
+  margin-right: auto;
+  font-size: 2rem;
+}
+
+nav h1:hover {
+  animation: rainbow 1000ms infinite;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+ul li {
+  margin: 10px 10px;
+  list-style-type: none;
+}
+
+a {
+  color: var(--texto);
+  text-decoration: none;
+}
+
+li a:hover {
+  animation: rainbow 1000ms infinite;
+}
+
+.type {
+  color: var(--destaque);
+  text-align: center;
+  font-size: 1.7rem;
+  margin: 20px 15px;
+  cursor: default;
+}
+
+.type:hover {
+  animation: transform 1000ms forwards;
+}
+
+.monkeys {
+  min-height: 500px;
+  margin-top: 50px;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1.1rem;
+}
+
+.monkey {
+  max-width: 200px;
+  /* max-height: 150px; */
+  border-radius: 10px;
+  border: 2px solid #2d3436;
+  box-shadow: 10px 10px 23px -5px rgba(0, 0, 0, 0.75);
+  transition: 500ms;
+}
+
+.monkey:hover {
+  /* animation: transform 1000ms forwards; */
+  animation: jello 1000ms ease 0s 1 normal forwards;
+  cursor: url("./img/monkey.png"), auto;
+}
+
+footer {
+  width: 100%;
+  padding: 20px 40px;
+  margin-top: 50px;
+  background: var(--menu);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.credits {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.credits a {
+  font-size: 1.2rem;
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    rgba(253, 32, 32, 1) 23%,
+    rgba(252, 176, 69, 1) 73%
+  );
+  background-size: 200px;
+  animation: gradient 5000ms infinite alternate;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.credits a::after {
+  content: "";
+  z-index: 999;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: right;
+  transform-origin: right;
+  transition: -webkit-transform 250ms ease-in;
+  transition: transform 250ms ease-in;
+  transition: transform 250ms ease-in, -webkit-transform 250ms ease-in;
+}
+
+.credits a:hover::after {
+  transform: scaleX(1);
+}
+
+/* @media (max-width: 700px){
+    .monkeys {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .monkey {
+        max-width: 100px;
+    }
+} */
